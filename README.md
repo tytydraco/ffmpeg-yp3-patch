@@ -38,6 +38,9 @@ Without this patch, modern FFMPEG-encoded videos will not play, or will be sever
 - `-pix_fmt:v yuvj420p`: Device prefers full-range pixel format.
 - `-filter:v "transpose=cclock"`: Proper orientation.
 
-# Static Binary
+# Docker
 
-Portable static `ffmpeg` and `ffprobe` exist within [static/](static/).
+1. Build container: `docker build -t media-player-ffmpeg .`
+2. Create a local folder (e.g. `data`) and put your input video into this folder
+3. You can then use a bind mount to `/data` (working directory in the container) to share the files between the container and the host
+4. The container can be used like this: `docker run --rm -it -v ./data:/data media-player-ffmpeg ffmpeg -i video.mp4 video.avi` (see above for required and recommended ffmpeg flags)

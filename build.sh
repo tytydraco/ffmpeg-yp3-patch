@@ -14,7 +14,7 @@ build_x264() {
     mkdir -p "$workdir"
     cd "$workdir" || true
 
-    git clone "https://github.com/tytydraco/x264-yp3-patch"
+    [ ! -d x264-yp3-patch ] && git clone "https://github.com/tytydraco/x264-yp3-patch"
     cd x264-yp3-patch || true
 
     ./configure \
